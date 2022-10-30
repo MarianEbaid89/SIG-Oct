@@ -12,7 +12,6 @@ import java.util.ArrayList;
 import javax.swing.JLabel;
 import javax.swing.JTable;
 import javax.swing.JTextField;
-import javax.swing.ListSelectionModel;
 import javax.swing.SwingConstants;
 import javax.swing.table.DefaultTableCellRenderer;
 import model.FileOperations;
@@ -20,7 +19,6 @@ import model.SalesInvoice;
 import model.SalesInvoiceItems;
 import model.SalesInvoiceItemsTableModel;
 import model.SalesInvoiceTableModel;
-import controller.SalesInvoiceController;
 
 /**
  *
