@@ -46,7 +46,7 @@ public class SalesInvoiceItemsTableModel extends AbstractTableModel{
         SalesInvoiceItems row = invoiceItemsList.get(rowIndex);
         switch (columnIndex) {
             case 0:
-                return row.getInvoice().getInvoiceId();
+                return row.getInvoiceId();//getInvoice().getInvoiceId();
             case 1:
                 return row.getItemName();
             case 2:

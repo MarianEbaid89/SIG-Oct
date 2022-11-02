@@ -352,8 +352,8 @@ public class FrmSalesInvoice extends javax.swing.JFrame {
             }
         });
     }
-    
-    
+
+
 
     public SalesInvoiceTableModel getInvoiceModel() {
         return invoiceModel;
@@ -406,6 +406,15 @@ public class FrmSalesInvoice extends javax.swing.JFrame {
 
     public ArrayList<SalesInvoiceItems> getItemsList() {
         return itemsList;
+    }
+
+    public SalesInvoice getInvoiceById(int id){
+        for(SalesInvoice inv : this.getInvoicesList()){
+            if(inv.getInvoiceId()==id){
+                return inv;
+            }
+        }
+        return null;
     }
     
     public void setTableCellAlignment(JTable t) {

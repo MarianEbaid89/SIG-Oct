@@ -53,7 +53,7 @@ public class SalesInvoiceController implements ActionListener {
                 break;
             case "save":
                 FileOperations operation = new FileOperations(frame);
-                operation.writeFile(frame.getInvoicesList());
+                operation.writeFile();
                 break;
         }
     }

@@ -10,6 +10,8 @@ import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import javax.swing.event.ListSelectionEvent;
 import javax.swing.event.ListSelectionListener;
+
+import model.FileOperations;
 import model.SalesInvoice;
 import model.SalesInvoiceItems;
 import model.SalesInvoiceItemsTableModel;
@@ -20,7 +22,7 @@ import view.FrmSalesInvoice;
  * @author HP
  */
 public class SalesInvoiceTableController implements ListSelectionListener {
-    
+
     private final FrmSalesInvoice frame;
     private final DateFormat dateFormat = new SimpleDateFormat("dd-MM-yyyy");
 
@@ -34,21 +36,24 @@ public class SalesInvoiceTableController implements ListSelectionListener {
         int selectedInvIndex = frame.getInvoicesTable().getSelectedRow();
         if (selectedInvIndex != -1) {
             SalesInvoice invoice = frame.getInvoicesList().get(selectedInvIndex);
-            ArrayList<SalesInvoiceItems> items = invoice.getItems();
-            SalesInvoiceItemsTableModel itemsTableModel = new SalesInvoiceItemsTableModel(items);
-            frame.setItemsList(items);
-            frame.getItemsTable().setModel(itemsTableModel);
-            
-            frame.getInvIdLabel().setText(Integer.toString(invoice.getInvoiceId()));
-            frame.getInvDateTxtField().setText(dateFormat.format(invoice.getInvoiceDate()));
-            frame.getNameTextField().setText(invoice.getCustName());
-            frame.getInvTotalLabel().setText("" + invoice.getInvoiceTotal());
-            
-            
+            SalesInvoice inv = frame.getInvoiceById(invoice.getInvoiceId());
+            FileOperations FileOperations = new FileOperations(frame);
+            ArrayList<SalesInvoiceItems> items  = FileOperations.readItemsFile(inv);
+
+                    SalesInvoiceItemsTableModel itemsTableModel = new SalesInvoiceItemsTableModel(items);
+                    frame.setItemsList(items);
+                    frame.getItemsTable().setModel(itemsTableModel);
+
+                frame.getInvIdLabel().setText(Integer.toString(invoice.getInvoiceId()));
+                frame.getInvDateTxtField().setText(dateFormat.format(invoice.getInvoiceDate()));
+                frame.getNameTextField().setText(invoice.getCustName());
+                frame.getInvTotalLabel().setText("" + invoice.getInvoiceTotal());
+
+
+
+
         }
 
+
     }
-    
-    
-    
 }

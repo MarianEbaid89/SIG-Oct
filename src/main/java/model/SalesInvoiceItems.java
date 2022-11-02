@@ -20,6 +20,14 @@ public class SalesInvoiceItems {
     SalesInvoice invoice;
     private ArrayList<SalesInvoice> parentInvoice;
 
+    public SalesInvoiceItems(int invoiceId, String itemName, double itemPrice, int quantity, SalesInvoice inv) {
+        this.invoiceId = invoiceId;
+        this.itemName = itemName;
+        this.itemPrice = itemPrice;
+        this.quantity = quantity;
+        this.invoice = invoice;
+    }
+
     public void setParentInvoice(ArrayList<SalesInvoice> parentInvoice) {
         this.parentInvoice = parentInvoice;
     }
